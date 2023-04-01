@@ -1,10 +1,31 @@
 from flask_restful import Api, Resource, reqparse
+import cohere
+
+# cohere
+
+# api handler
+
 
 class HelloApiHandler(Resource):
+  
   def get(self):
+
+    co = cohere.Client('BMA8m2BTfZL8evBDjd05ctLFlgKtkARvn7jJbYgq')
+
+    # response = co.generate(
+    #   model='command-xlarge-nightly',  
+    #   prompt = prompt,  
+    #   max_tokens=40,  
+    #   temperature=0.6,  
+    #   stop_sequences=["--"]
+    # )
+
+    # age = response.generations[0].text
+
+
     return {
       'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
+      'message': "Hello ndrew"
       }
 
   def post(self):
