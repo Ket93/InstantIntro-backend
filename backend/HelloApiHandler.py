@@ -81,7 +81,6 @@ class HelloApiHandler(Resource):
     aspirationString = res[aspirationIndex + 12 : summaryIndex]
     summaryString = res[summaryIndex + 9 : ]
 
-    openai.api_key = "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"
     image = openai.Image.create(
       prompt="A cute baby sea otter",
     )
