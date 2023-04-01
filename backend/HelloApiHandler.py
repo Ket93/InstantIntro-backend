@@ -1,5 +1,7 @@
 from flask_restful import Api, Resource, reqparse
 import cohere
+import openai
+import os
 
 # cohere
 
@@ -79,13 +81,21 @@ class HelloApiHandler(Resource):
     aspirationString = res[aspirationIndex + 12 : summaryIndex]
     summaryString = res[summaryIndex + 9 : ]
 
+    openai.api_key = "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"
+    image = openai.Image.create(
+      prompt="A cute baby sea otter",
+    )
+
+    imageURL = image['data'][0]["url"]
+
     return {
       'resultStatus': 'SUCCESS',
       'age': '{}'.format(ageString),
       'name': '{}'.format(nameString),
       'occupation': '{}'.format(occupationString),
       'aspiration': '{}'.format(aspirationString),
-      'summary': '{}'.format(summaryString)
+      'summary': '{}'.format(summaryString),
+      'image': imageURL
       }
 
   def post(self):
